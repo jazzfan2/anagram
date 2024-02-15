@@ -3,7 +3,8 @@
 # Author     : Rob Toscani
 # Date       : 26-09-2023
 # Description: Shell script based on awk, generating a full list of anagrams in the 
-# chosen languages present on the system.
+# chosen languages present on the system, or if a word is given as an argument,
+# only that word and its anagrams.
 # anagram.sh allows language setting, including any *combination* of languages.
 # If a word argument is given, the output is filtered to only that word and its 
 # anagram(s) if present.
