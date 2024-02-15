@@ -4,19 +4,18 @@
 # Date       : 26-09-2023
 # Description: Shell script based on awk, generating a full list of anagrams in the 
 # chosen languages present on the system.
-# Allows language setting, including *combination* of languages.
+# anagram.sh allows language setting, including any *combination* of languages.
 # If a word argument is given, the output is filtered to only that word and its 
 # anagram(s) if present.
-# Output can be piped to e.g. 'less', 'allign_tsv.sh' or 'text2troff' or other
-# utilities and applications.
+# Output can be piped to e.g. 'less' or other utilities and applications.
 #
 # Examples:
 #
-#	anagram.sh -abdnsi | sed -r 's/ {2,}/\t/g' | grep -E "[^\t]\t+[^\t]" | allign_tsv.sh -
-#	anagram.sh -abdnsi | sed -r 's/ {2,}/\t/g' | grep -E "[^\t]\t+[^\t]" | text2troff - | trofms
+#   anagram.sh -abdnsi | sed -r 's/ {2,}/\t/g' | grep -E "[^\t]\t+[^\t]" | allign_tsv.sh -
+#   anagram.sh -abdnsi | sed -r 's/ {2,}/\t/g' | grep -E "[^\t]\t+[^\t]" | text2troff - | trofms
 #   anagram.sh -abdnsi | sed 's/ *$//g' | sed -r 's/ {2,}/\t/g' | grep -E "[\t].+[\t]" | text2troff -s - | trofms
 #
-# Perequisite is presence on the system of a word list in flat text format of at least
+# Perequisite is presence on the system of a words list in flat text format of at least
 # one language.
 #
 ######################################################################################
