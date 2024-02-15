@@ -3,11 +3,11 @@ anagram.sh - A program that generates a full list of anagrams in a chosen (combi
 
 # Description:
 anagram.sh is a shell script based on awk, that generates a full list of anagrams in the chosen language(s) present on the system, or if a word is given as an argument, only that word and its anagrams.
-Apart from setting one preferred langauge, it also allows any *combination* of languages to be set.
+Apart from setting one preferred langauge, anagram.sh also allows any *combination* of languages to be set.
 The results are sent to standard output and can be piped to e.g. 'less' or other utilities and applications.
 
-Perequisite is presence on the system of a word list in flat text format of at least one language.
-In its present form, the program code references following language word lists: 
+Perequisite is presence on the system of a words list in flat text format of at least one language.
+In its present form, the program code references following language words lists: 
 
 	/usr/share/dict/dutch
 	/usr/share/dict/american-english
@@ -24,7 +24,7 @@ If wished and as per system configuration, above paths and langauge default may 
 # How to use anagram.sh
 ## Usage:
 
-	anagram10b.sh [-abcdfhins] [WORD]
+	anagram.sh [-abcdfhins] [WORD]
 
 ## Options:
 	-a	American-English
