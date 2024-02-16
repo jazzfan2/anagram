@@ -1,0 +1,86 @@
+.SH 1
+Name: anagram.sh
+.pdfhref O 1 "Name: anagram.sh"
+.pdfhref M "name-anagram.sh"
+.LP
+anagram.sh - A program that generates a full list of anagrams in a
+chosen (combination of) language(s).
+.SH 1
+Description:
+.pdfhref O 1 "Description:"
+.pdfhref M "description"
+.LP
+anagram.sh is a shell script based on awk, that generates a full list of
+anagrams in the chosen language(s) present on the system, or if a word
+is given as an argument, only that word and its anagrams.
+Apart from setting one preferred langauge, anagram.sh also allows any
+\f[I]combination\f[R] of languages to be set.
+The results are sent to standard output and can be piped to e.g.\ `less'
+or other utilities and applications.
+.PP
+Perequisite is presence on the system of a words list in flat text
+format of at least one language.
+In its present form, the program code references following language
+words lists:
+.IP
+.nf
+\f[C]
+/usr/share/dict/dutch
+/usr/share/dict/american-english
+/usr/share/dict/british-english
+/usr/share/hunspell/de_DE_frami.dic
+/usr/share/dict/french
+/usr/share/dict/spanish
+/usr/share/dict/italian
+\f[]
+.fi
+.LP
+If no option is given, Dutch is the default language.
+.PP
+If wished and as per system configuration, above paths and langauge
+default may be changed or removed and references to other word lists may
+be added, by modifying the program code accordingly.
+.SH 1
+How to use anagram.sh
+.pdfhref O 1 "How to use anagram.sh"
+.pdfhref M "how-to-use-anagram.sh"
+.SH 2
+Usage:
+.pdfhref O 2 "Usage:"
+.pdfhref M "usage"
+.IP
+.nf
+\f[C]
+anagram.sh [-abcdfhins] [WORD]
+\f[]
+.fi
+.SH 2
+Options:
+.pdfhref O 2 "Options:"
+.pdfhref M "options"
+.IP
+.nf
+\f[C]
+-a  American-English
+-b  British-English
+-d  German
+-f  French
+-h  Help (this output)
+-i  Italian
+-n  Dutch
+-s  Spanish
+-c  All languages combined
+\f[]
+.fi
+.LP
+All options can be combined.
+If no option is given, Dutch is the default language.
+.PP
+The [WORD] argument is optional, and makes anagram.sh to filter the
+output to only the given word and its anagram(s) if present.
+.SH 1
+Author:
+.pdfhref O 1 "Author:"
+.pdfhref M "author"
+.LP
+Written by Rob Toscani (rob_toscani\[at]yahoo.com).
