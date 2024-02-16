@@ -41,5 +41,13 @@ All options can be combined. If no option is given, Dutch is the default languag
 
 The [WORD] argument is optional, and makes anagram.sh to filter the output to only the given word and its anagram(s) if present.
 
+For example, the command:
+
+	./anagram.sh -banfsd emirates
+
+gives the follwing results:
+
+	émerisât            emirate's           emirates            estimera            étirâmes            itérâmes            materies            matières            Reitsema            sèmerait            steamier 
+
 # Author:
 Written by Rob Toscani (rob_toscani@yahoo.com).
