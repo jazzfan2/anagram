@@ -45,7 +45,7 @@ For example, the command:
 
 	./anagram.sh -banfsd emirates
 
-gives the follwing results:
+gives following results:
 
 	émerisât            emirate's           emirates            estimera            étirâmes            itérâmes            materies            matières            Reitsema            sèmerait            steamier 
 
