@@ -72,40 +72,48 @@ helptext()
     done << EOF
 
 Usage:
-anagram10b.sh [-abcdfhins] [WOORD]
+anagram10b.sh [-abcdfghiqs] [WOORD]
 
-    -a	American-English
-    -b	British-English
-    -d	German
-    -f	French
-    -h	Help (this output)
-    -i	Italian
-    -n	Dutch
-    -s	Spanish
-    -c	All languages combined
+-a	American-English
+-b	British-English
+-d	Dutch
+-f	French
+-g	German
+-h	Help (this output)
+-i	Italian
+-s	Spanish
+-c	All languages combined
+-m VAL
+|	Print if number of anagrams >= VAL
+-M VAL
+|	Print if number of anagrams <= VAL
 
 EOF
 }
 
 
 default=$dictionary_nl
+qty_min=1
+qty_max=100
 count=0
 touch $dict
 
-while getopts "abcdfhins" OPTION; do
+while getopts "abcdfghim:M:s" OPTION; do
     case $OPTION in
         a) cat $dictionary_am >> $dict; (( count += 1 )) ;;
         b) cat $dictionary_br >> $dict; (( count += 1 )) ;;
-        d) process_dict_de    >> $dict; (( count += 1 )) ;;
+        d) cat $dictionary_nl >> $dict; (( count += 1 )) ;;
         f) cat $dictionary_fr >> $dict; (( count += 1 )) ;;
+        g) process_dict_de    >> $dict; (( count += 1 )) ;;
         h) helptext; exit 0 ;;
         i) cat $dictionary_it >> $dict; (( count += 1 )) ;;
-        n) cat $dictionary_nl >> $dict; (( count += 1 )) ;;
         s) cat $dictionary_sp >> $dict; (( count += 1 )) ;;
         c) process_dict_de    >| $dict
            cat $dictionary_nl $dictionary_am \
                $dictionary_br $dictionary_fr \
                $dictionary_sp $dictionary_it >> $dict; count=7 ;;
+        m) qty_min=$OPTARG ;;
+        M) qty_max=$OPTARG ;;
         *) helptext; exit 1 ;;
     esac
 done
@@ -159,5 +167,6 @@ awk 'BEGIN {
          for (signature in anagrams){
              print anagrams[signature]
          }
-     }' | grep "\( \|^\)"$pattern"\( \|$\)"
+     }' | grep "\( \|^\)"$pattern"\( \|$\)" | 
+          awk -v qty_min=$qty_min -v qty_max=$qty_max '{ if (NF >= qty_min && NF <= qty_max) print }'
 
