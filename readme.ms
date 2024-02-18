@@ -18,10 +18,10 @@ Apart from setting one preferred langauge, anagram.sh also allows any
 The results are sent to standard output and can be piped to e.g.\ `less'
 or other utilities and applications.
 .PP
-Perequisite is presence on the system of a words list in flat text
-format of at least one language.
-In its present form, the program code references following language
-words lists:
+Perequisite is presence on the system of a word list in flat text format
+of at least one language.
+In its present form, the program code references following language word
+lists:
 .IP
 .nf
 \f[C]
@@ -51,7 +51,7 @@ Usage:
 .IP
 .nf
 \f[C]
-anagram.sh [-abcdfhins] [WORD]
+anagram.sh [-abcdfghis] [WORD]
 \f[]
 .fi
 .SH 2
@@ -61,23 +61,41 @@ Options:
 .IP
 .nf
 \f[C]
--a  American-English
--b  British-English
--d  German
--f  French
--h  Help (this output)
--i  Italian
--n  Dutch
--s  Spanish
--c  All languages combined
+-a      American-English
+-b      British-English
+-d      Dutch
+-f      French
+-g      German
+-h      Help (this output)
+-i      Italian
+-s      Spanish
+-c      All languages combined
+-m VAL  Print if number of anagrams >= VAL
+-M VAL  Print if number of anagrams <= VAL
 \f[]
 .fi
 .LP
 All options can be combined.
 If no option is given, Dutch is the default language.
 .PP
-The [WORD] argument is optional, and makes anagram.sh to filter the
-output to only the given word and its anagram(s) if present.
+The [WORD] argument is optional, and makes anagram.sh filter the output
+to only the given word and its anagram(s) if present.
+.PP
+For example, the command:
+.IP
+.nf
+\f[C]
+./anagram.sh -banfsd emirates
+\f[]
+.fi
+.LP
+gives following results:
+.IP
+.nf
+\f[C]
+émerisât            emirate\[aq]s           emirates            estimera            étirâmes            itérâmes            materies            matières            Reitsema            sèmerait            steamier 
+\f[]
+.fi
 .SH 1
 Author:
 .pdfhref O 1 "Author:"
