@@ -72,7 +72,7 @@ helptext()
     done << EOF
 
 Usage:
-anagram10b.sh [-abcdfghimMs] [WORD]
+anagram.sh [-abcdfghimMs] [WORD]
 
 -a	American-English
 -b	British-English
