@@ -24,7 +24,7 @@ If wished and as per system configuration, above paths and langauge default may 
 # How to use anagram.sh
 ## Usage:
 
-	anagram.sh [-abcdfghis] [WORD]
+	anagram.sh [-abcdfghimMs] [WORD]
 
 ## Options:
 	-a      American-English
