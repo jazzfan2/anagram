@@ -13,7 +13,9 @@ Description:
 anagram.sh is a shell script based on awk, that generates a full list of
 anagrams in the chosen language(s) present on the system, or if a word
 is given as an argument, only that word and its anagrams.
-Apart from setting one preferred langauge, anagram.sh also allows any
+Additionally, a chosen minimal, maximal and/or exact number of anagrams
+per solution can be set.
+Apart from setting one preferred language, anagram.sh also allows any
 \f[I]combination\f[R] of languages to be set.
 The results are sent to standard output and can be piped to e.g.\ `less'
 or other utilities and applications.
@@ -85,7 +87,7 @@ For example, the command:
 .IP
 .nf
 \f[C]
-./anagram.sh -banfsd emirates
+./anagram.sh -abdfgs emirates
 \f[]
 .fi
 .LP
