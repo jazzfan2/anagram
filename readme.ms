@@ -70,8 +70,8 @@ Options:
 -i      Italian
 -s      Spanish
 -c      All languages combined
--m VAL  Print if number of anagrams >= VAL
--M VAL  Print if number of anagrams <= VAL
+-m QTY  Print solutions with at least QTY anagrams
+-M QTY  Print solutions with at most  QTY anagrams
 \f[]
 .fi
 .LP

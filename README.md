@@ -36,8 +36,8 @@ If wished and as per system configuration, above paths and langauge default may 
 	-i      Italian
 	-s      Spanish
 	-c      All languages combined
-	-m VAL  Print if number of anagrams >= VAL
-	-M VAL  Print if number of anagrams <= VAL
+	-m QTY  Print solutions with at least QTY anagrams
+	-M QTY  Print solutions with at most  QTY anagrams
 
 All options can be combined. If no language option is given, Dutch is the default language.
 
