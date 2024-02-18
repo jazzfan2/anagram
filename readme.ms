@@ -51,7 +51,7 @@ Usage:
 .IP
 .nf
 \f[C]
-anagram.sh [-abcdfghis] [WORD]
+anagram.sh [-abcdfghimMs] [WORD]
 \f[]
 .fi
 .SH 2
@@ -76,7 +76,7 @@ Options:
 .fi
 .LP
 All options can be combined.
-If no option is given, Dutch is the default language.
+If no language option is given, Dutch is the default language.
 .PP
 The [WORD] argument is optional, and makes anagram.sh filter the output
 to only the given word and its anagram(s) if present.

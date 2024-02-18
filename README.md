@@ -39,7 +39,7 @@ If wished and as per system configuration, above paths and langauge default may 
 	-m VAL  Print if number of anagrams >= VAL
 	-M VAL  Print if number of anagrams <= VAL
 
-All options can be combined. If no option is given, Dutch is the default language.
+All options can be combined. If no language option is given, Dutch is the default language.
 
 The [WORD] argument is optional, and makes anagram.sh filter the output to only the given word and its anagram(s) if present.
 
