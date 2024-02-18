@@ -46,7 +46,7 @@ The [WORD] argument is optional, and makes anagram.sh filter the output to only 
 
 For example, the command:
 
-	./anagram.sh -banfsd emirates
+	./anagram.sh -abdfgs emirates
 
 gives following results:
 
