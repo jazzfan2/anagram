@@ -27,17 +27,17 @@ If wished and as per system configuration, above paths and langauge default may 
 	anagram.sh [-abcdfghis] [WORD]
 
 ## Options:
-	-a		American-English
-	-b		British-English
-	-d		Dutch
-	-f		French
-	-g		German
-	-h		Help (this output)
-	-i		Italian
-	-s		Spanish
-	-c		All languages combined
-	-m VAL	Print if number of anagrams >= VAL
-	-M VAL	Print if number of anagrams <= VAL
+	-a      American-English
+	-b      British-English
+	-d      Dutch
+	-f      French
+	-g      German
+	-h      Help (this output)
+	-i      Italian
+	-s      Spanish
+	-c      All languages combined
+	-m VAL  Print if number of anagrams >= VAL
+	-M VAL  Print if number of anagrams <= VAL
 
 All options can be combined. If no option is given, Dutch is the default language.
 
