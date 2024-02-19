@@ -171,11 +171,10 @@ awk -v filterlength=$filterlength 'BEGIN {
      END {
          for (signature in anagrams){
              if (filterlength == 0)
-                 wordlength = length(signature)
-             else
-                 wordlength = filterlength
-             if (length(signature) == wordlength)
                  print anagrams[signature]
+             else
+                 if (length(signature) == filterlength)
+                     print anagrams[signature]
          }
      }' | grep "\( \|^\)"$pattern"\( \|$\)" | 
           awk -v qty_min=$qty_min -v qty_max=$qty_max '{ if (NF >= qty_min && NF <= qty_max) print }'
