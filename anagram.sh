@@ -5,7 +5,8 @@
 # Description: Shell script based on awk, generating a full list of anagrams in the 
 # chosen languages present on the system.
 # If a word argument is given, the output is filtered to only that word and its 
-# anagram(s) if present.
+# anagram(s) if present. Additionally, filters can be set for word-length and for 
+# minimal and/or maximal number of anagrams per solution.
 # anagram.sh allows language setting, including any *combination* of languages.
 # Output can be piped to e.g. 'less' or other utilities and applications.
 #
@@ -72,7 +73,7 @@ helptext()
     done << EOF
 
 Usage:
-anagram.sh [-abcdfghimMs] [WORD]
+anagram.sh [-abcdfghilmMs] [WORD]
 
 -a	American-English
 -b	British-English
@@ -83,6 +84,8 @@ anagram.sh [-abcdfghimMs] [WORD]
 -i	Italian
 -s	Spanish
 -c	All languages combined
+-l LENGTH
+|	Print solutions with word LENGTH only
 -m QTY
 |	Print solutions with at least QTY anagrams
 -M QTY
@@ -95,10 +98,11 @@ EOF
 default=$dictionary_nl
 qty_min=1
 qty_max=100
+filterlength=0
 count=0
 touch $dict
 
-while getopts "abcdfghim:M:s" OPTION; do
+while getopts "abcdfghil:m:M:s" OPTION; do
     case $OPTION in
         a) cat $dictionary_am >> $dict; (( count += 1 )) ;;
         b) cat $dictionary_br >> $dict; (( count += 1 )) ;;
@@ -112,6 +116,7 @@ while getopts "abcdfghim:M:s" OPTION; do
            cat $dictionary_nl $dictionary_am \
                $dictionary_br $dictionary_fr \
                $dictionary_sp $dictionary_it >> $dict; count=7 ;;
+        l) filterlength=$OPTARG ;;
         m) qty_min=$OPTARG ;;
         M) qty_max=$OPTARG ;;
         *) helptext; exit 1 ;;
@@ -132,7 +137,7 @@ else
 fi |
 
 
-awk 'BEGIN {
+awk -v filterlength=$filterlength 'BEGIN {
          # Setting for looping through an array in ascending index order, see:
          # https://www.gnu.org/software/gawk/manual/gawk.html#Controlling-Scanning
 
@@ -165,7 +170,12 @@ awk 'BEGIN {
 
      END {
          for (signature in anagrams){
-             print anagrams[signature]
+             if (filterlength == 0)
+                 wordlength = length(signature)
+             else
+                 wordlength = filterlength
+             if (length(signature) == wordlength)
+                 print anagrams[signature]
          }
      }' | grep "\( \|^\)"$pattern"\( \|$\)" | 
           awk -v qty_min=$qty_min -v qty_max=$qty_max '{ if (NF >= qty_min && NF <= qty_max) print }'

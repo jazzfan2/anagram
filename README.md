@@ -3,7 +3,7 @@ anagram.sh - A program that generates a full list of anagrams in a chosen (combi
 
 # Description:
 anagram.sh is a shell script based on awk, that generates a full list of anagrams in the chosen language(s) present on the system, or if a word is given as an argument, only that word and its anagrams.
-Additionally, a filter can be set for a chosen minimal, maximal and/or exact number of anagrams per solution.
+Additionally, filters can be set for word-length and for minimal and/or maximal number of anagrams per solution.
 Apart from setting one preferred language, anagram.sh also allows any *combination* of languages to be set.
 The results are sent to standard output and can be piped to e.g. 'less' or other utilities and applications.
 
