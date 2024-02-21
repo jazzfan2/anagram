@@ -3,8 +3,11 @@ anagram.sh - A program that generates a full list of anagrams in a chosen (combi
 
 # Description:
 anagram.sh is a shell script based on awk, that generates a full list of anagrams in the chosen language(s) present on the system, or if a word is given as an argument, only that word and its anagrams.
-Additionally, filters can be set for word-length and for minimal and/or maximal number of anagrams per solution.
-Apart from setting one preferred language, anagram.sh also allows any *combination* of languages to be set.
+Additionally, filters can be set for:
+- word-length
+- minimal and/or maximal number of anagrams per solution
+- characters to be all included and/or excluded
+- language, or any *combination* of languages
 The results are sent to standard output and can be piped to e.g. 'less' or other utilities and applications.
 
 Perequisite is presence on the system of a word list in flat text format of at least one language.
@@ -25,7 +28,7 @@ If wished and as per system configuration, above paths and langauge default may 
 # How to use anagram.sh
 ## Usage:
 
-	anagram.sh [-abcdfghilmMs] [WORD]
+	anagram.sh [-abcdfghislmMIx] [WORD]
 
 ## Options:
 	-a          American-English
@@ -40,6 +43,8 @@ If wished and as per system configuration, above paths and langauge default may 
 	-l LENGTH   Print solutions with word LENGTH only
 	-m QTY      Print solutions with at least QTY anagrams
 	-M QTY      Print solutions with at most  QTY anagrams
+	-I CHARS    Include words with all of these CHARS
+	-x CHARS    Exclude words with any of these CHARS
 
 All options can be combined. If no language option is given, Dutch is the default language.
 
