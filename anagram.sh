@@ -173,24 +173,19 @@ awk -v qty_min=$qty_min -v qty_max=$qty_max -v filterlength=$filterlength 'BEGIN
          gsub(/[ñ]/,     "n")
          gsub(/[ç]/,     "c")
 
-         gsub(/['\"''\'' &-]/, "")                # Remove other non-alphanumeric characters
+         gsub(/['\"''\'' &-]/, "")                      # Remove other non-alphanumeric characters
 
-         split($0,chars,"")                       # Array of all the word`s normalized characters
+         split($0,chars,"")                             # Array of all the word`s normalized characters
          signature = ""
          for (i in chars){
              signature = signature chars[i] # Unique sorted character combination (= signature)
          }
 
          if (! (signature in qtylist))
-             qtylist[signature] = 0               # Array of word-quantity per signature
+             qtylist[signature] = 0                     # Array of word-quantity per signature
 
-         for (i = 0; ; i++){
-             if (! ((signature, i) in anagrams)){
-                 anagrams[signature, i] = word    # "Quasi-2D"-array of all words per signature 
-                 qtylist[signature] += 1
-                 break
-             }
-         }
+         anagrams[signature, qtylist[signature]] = word # "Quasi-2D"-array of all words per signature 
+         qtylist[signature] += 1
      }
 
      END {
