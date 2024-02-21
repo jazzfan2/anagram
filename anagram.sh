@@ -9,7 +9,7 @@
 # - word-length
 # - minimal and/or maximal number of anagrams per solution
 # - characters to be all included and/or excluded
-# anagram.sh allows language setting, including any *combination* of languages.
+# - language setting, including any *combination* of languages.
 # Output can be piped to e.g. 'less' or other utilities and applications.
 #
 # Examples:
