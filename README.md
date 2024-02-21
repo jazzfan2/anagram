@@ -32,7 +32,7 @@ If wished and as per system configuration, above paths and langauge default may 
 # How to use anagram.sh
 ## Usage:
 
-	anagram.sh [-abcdfghislmMIx] [WORD]
+	anagram.sh [-abcdfghislmMIx] [WORD(1), ... , WORD(n)]
 
 ## Options:
 	-a          American-English

@@ -76,7 +76,7 @@ helptext()
     done << EOF
 
 Usage:
-anagram.sh [-abcdfghislmMIx] [WORDS]
+anagram.sh [-abcdfghislmMIx] [WORD(1), ... , WORD(n)]
 
 -a	American-English
 -b	British-English
@@ -171,9 +171,9 @@ awk -v qty_min=$qty_min -v qty_max=$qty_max -v filterlength=$filterlength -v wor
          split(string,chars,"")              # Array of all the string`s normalized characters
          signature = ""
          for (i in chars){
-             signature = signature chars[i]  # Unique sorted character combination (= signature)
+             signature = signature chars[i]
          }
-         return signature
+         return signature                    # Unique sorted character combination (= signature)
     }
 
     BEGIN {
