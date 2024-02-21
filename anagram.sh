@@ -93,9 +93,9 @@ anagram.sh [-abcdfghislmMIx] [WORD]
 -M QTY
 |	Print solutions with at most QTY anagrams
 -I CHARS
-|   Include words with all of these CHARS
+|	Include words with all of these CHARS
 -x CHARS
-|   Exclude words with any of these CHARS
+|	Exclude words with any of these CHARS
 EOF
 }
 
