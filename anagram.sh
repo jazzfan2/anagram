@@ -4,9 +4,9 @@
 # Date       : 20-02-2024
 # Description: Shell script based on awk, generating a full list of anagrams in the 
 # chosen languages present on the system.
-# If a word argument is given, the output is filtered to only that word and its 
+# If a word(s) argument is given, the output is filtered to only that word(-combination) and its 
 # anagram(s) if present. Additionally, filters can be set for:
-# - word-length
+# - anagram-length
 # - minimal and/or maximal number of anagrams per solution
 # - characters to be all included and/or excluded
 # Besides any single language, any *combination* of languages can be set as well.
@@ -75,7 +75,7 @@ helptext()
     done << EOF
 
 Usage:
-anagram.sh [-abcdfghislmMIx] [WORD]
+anagram.sh [-abcdfghislmMIx] [WORDS]
 
 -a	American-English
 -b	British-English
@@ -101,7 +101,8 @@ EOF
 
 
 default=$dictionary_nl
-qty_min=2
+words=""
+qty_min=1
 qty_max=100
 filterlength=0
 incl_chars="."    # Default: dot means include all characters
@@ -133,7 +134,7 @@ while getopts "abcdfghisl:m:M:I:x:" OPTION; do
 done
 shift $((OPTIND-1))
 
-[[ $# == 1 ]] && pattern="$1" || pattern="."
+[[ $# != 0 ]] && words="$@"   # Word(s) argument(s)
 
 chargrep=""
 for (( i = 0; i < ${#incl_chars}; i += 1 )); do
@@ -152,45 +153,52 @@ else
     cat $default
 fi |
 
-awk -v qty_min=$qty_min -v qty_max=$qty_max -v filterlength=$filterlength 'BEGIN {
+awk -v qty_min=$qty_min -v qty_max=$qty_max -v filterlength=$filterlength -v words="$words" '\
+    function normalize(string)
+    {
+         string = tolower(string)
+         gsub(/[áàäâå]/, "a", string)        # Normalize all characters to lower case and w/o accent marks
+         gsub(/[éèëê]/,  "e", string)
+         gsub(/[ïíì]/,   "i", string)
+         gsub(/[óòöôø]/, "o", string)
+         gsub(/[úùü]/,   "u", string)
+         gsub(/[ñ]/,     "n", string)
+         gsub(/[ç]/,     "c", string)
+
+         gsub(/['\"''\'' .&-]/, "", string)  # Remove other non-alphanumeric characters
+
+         split(string,chars,"")              # Array of all the string`s normalized characters
+         signature = ""
+         for (i in chars){
+             signature = signature chars[i]  # Unique sorted character combination (= signature)
+         }
+         return signature
+    }
+
+    BEGIN {
          # Setting for looping through an array in ascending index order, see:
          # https://www.gnu.org/software/gawk/manual/gawk.html#Controlling-Scanning
 
          PROCINFO["sorted_in"]="@val_str_asc"
          split("",qtylist)
          split("",anagrams)
+
+         words = normalize(words)                     # Get signature of word(s) argument
      }
 
      {
-         word = $0                    # The word presently read
-
-         $0 = tolower($0)
-         gsub(/[áàäâå]/, "a")         # Normalize all its characters to lower case and w/o accent marks:
-         gsub(/[éèëê]/,  "e")
-         gsub(/[ïíì]/,   "i")
-         gsub(/[óòöôø]/, "o")
-         gsub(/[úùü]/,   "u")
-         gsub(/[ñ]/,     "n")
-         gsub(/[ç]/,     "c")
-
-         gsub(/['\"''\'' &-]/, "")                      # Remove other non-alphanumeric characters
-
-         split($0,chars,"")                             # Array of all the word`s normalized characters
-         signature = ""
-         for (i in chars){
-             signature = signature chars[i] # Unique sorted character combination (= signature)
-         }
-
+         signature = normalize($0)                    # Get signature of present dictionary word
          if (! (signature in qtylist))
-             qtylist[signature] = 0                     # Array of word-quantity per signature
+             qtylist[signature] = 0                   # Array of number of dict. words per signature
 
-         anagrams[signature, qtylist[signature]] = word # "Quasi-2D"-array of all words per signature 
+         anagrams[signature, qtylist[signature]] = $0 # "Quasi-2D"-array of all dict. words per signature 
          qtylist[signature] += 1
      }
 
      END {
          for (signature in qtylist){
-             if (qtylist[signature] >= qty_min && qtylist[signature] <= qty_max &&
+             if ((length(words) == 0 || signature == words) &&
+                qtylist[signature] >= qty_min && qtylist[signature] <= qty_max &&
                 (filterlength == 0 || filterlength == length(signature))){
                  for (i = 0; i < qtylist[signature]; i++){
                      if (length(signature) < 18)
@@ -201,6 +209,5 @@ awk -v qty_min=$qty_min -v qty_max=$qty_max -v filterlength=$filterlength 'BEGIN
                  printf("\n")
              }
          }
-     }' | sort | grep "\( \|^\)"$pattern"\( \|$\)" |
-                 grep -iv [$excl_chars] | eval "$chargrep"
+     }' | sort | grep -iv [$excl_chars] | eval "$chargrep"
 
