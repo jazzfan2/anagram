@@ -76,7 +76,7 @@ helptext()
     done << EOF
 
 Usage:
-anagram.sh [-abcdfghislmMIx] [WORD(1), ... , WORD(n)]
+anagram.sh [-abcdfghislmMIx] [WORD(1) ... WORD(n)]
 
 -a	American-English
 -b	British-English
