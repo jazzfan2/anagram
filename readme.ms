@@ -15,7 +15,7 @@ anagrams in the chosen language(s) present on the system.
 In case a (combination of) word(s) is given as argument(s), it just
 generates the anagrams that fit this particular word(-combination).
 .PP
-Additionally, filters can be set for: - word-length - minimal and/or
+Additionally, filters can be set for: - anagram-length - minimal and/or
 maximal number of anagrams per solution - characters to be all included
 and/or excluded
 .PP
@@ -58,7 +58,7 @@ Usage:
 .IP
 .nf
 \f[C]
-anagram.sh [-abcdfghislmMIx] [WORD(1) ... WORD(n)]
+anagram.sh [-abcdfghislmMIx] [WORD(1) [ ... WORD(n)]]
 \f[]
 .fi
 .SH 2

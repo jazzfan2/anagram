@@ -6,7 +6,7 @@ anagram.sh is a shell script based on awk, that generates a full list of anagram
 In case a (combination of) word(s) is given as argument(s), it just generates the anagrams that fit this particular word(-combination).
 
 Additionally, filters can be set for:
-- word-length
+- anagram-length
 - minimal and/or maximal number of anagrams per solution
 - characters to be all included and/or excluded
 
@@ -32,7 +32,7 @@ If wished and as per system configuration, above paths and langauge default may 
 # How to use anagram.sh
 ## Usage:
 
-	anagram.sh [-abcdfghislmMIx] [WORD(1) ... WORD(n)]
+	anagram.sh [-abcdfghislmMIx] [WORD(1) [ ... WORD(n)]]
 
 ## Options:
 	-a          American-English
