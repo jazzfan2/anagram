@@ -40,7 +40,7 @@ lists:
 \f[]
 .fi
 .LP
-If no option is given, Dutch is the default language.
+If no language option is given, Dutch is the default language.
 .PP
 If wished and as per system configuration, above paths and langauge
 default may be changed or removed and references to other word lists may
