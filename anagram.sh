@@ -135,11 +135,11 @@ shift $((OPTIND-1))
 
 [[ $# == 1 ]] && pattern="$1" || pattern="."
 
-grep_chars=""
+chargrep=""
 for (( i = 0; i < ${#incl_chars}; i += 1 )); do
-    grep_chars=$grep_chars" | grep -i ${incl_chars:$i:1}"
+    chargrep=$chargrep" | grep -i ${incl_chars:$i:1}"
 done
-grep_chars=${grep_chars:2}
+chargrep=${chargrep:2}
 
 
 echo -e "One moment, the output is being prepared ...\n" >&2
@@ -182,7 +182,7 @@ awk -v qty_min=$qty_min -v qty_max=$qty_max -v filterlength=$filterlength 'BEGIN
          }
 
          if (! (signature in qtylist))
-             qtylist[signature] = 0                 # Array with number of words per signature
+             qtylist[signature] = 0                 # Array of word-quantity per signature
 
          for (i = 0; ; i++){
              if (! ((signature, i) in anagrams)){
@@ -197,21 +197,16 @@ awk -v qty_min=$qty_min -v qty_max=$qty_max -v filterlength=$filterlength 'BEGIN
          for (signature in qtylist){
              if (qtylist[signature] >= qty_min && qtylist[signature] <= qty_max){
                  if ((filterlength == 0) || (filterlength == length(signature))){
-                     for (i = 0; ; i++){
-                         if ((signature, i) in anagrams){
-                             if (length(signature) < 18)
-                                 printf("%-20s", anagrams[signature, i])
-                             else
-                                 printf("%-40s", anagrams[signature, i])
-                         }
-                         else{
-                             printf("\n")
-                             break
-                         }
+                     for (i = 0; i < qtylist[signature]; i++){
+                         if (length(signature) < 18)
+                             printf("%-20s", anagrams[signature, i])
+                         else
+                             printf("%-40s", anagrams[signature, i])
                      }
+                     printf("\n")
                  }
              }
          }
      }' | sort | grep "\( \|^\)"$pattern"\( \|$\)" |
-                 grep -iv [$excl_chars] | eval "$grep_chars"
+                 grep -iv [$excl_chars] | eval "$chargrep"
 
