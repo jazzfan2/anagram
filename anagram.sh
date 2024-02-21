@@ -195,16 +195,15 @@ awk -v qty_min=$qty_min -v qty_max=$qty_max -v filterlength=$filterlength 'BEGIN
 
      END {
          for (signature in qtylist){
-             if (qtylist[signature] >= qty_min && qtylist[signature] <= qty_max){
-                 if ((filterlength == 0) || (filterlength == length(signature))){
-                     for (i = 0; i < qtylist[signature]; i++){
-                         if (length(signature) < 18)
-                             printf("%-20s", anagrams[signature, i])
-                         else
-                             printf("%-40s", anagrams[signature, i])
-                     }
-                     printf("\n")
+             if (qtylist[signature] >= qty_min && qtylist[signature] <= qty_max &&
+                (filterlength == 0 || filterlength == length(signature))){
+                 for (i = 0; i < qtylist[signature]; i++){
+                     if (length(signature) < 18)
+                         printf("%-20s", anagrams[signature, i])
+                     else
+                         printf("%-40s", anagrams[signature, i])
                  }
+                 printf("\n")
              }
          }
      }' | sort | grep "\( \|^\)"$pattern"\( \|$\)" |
