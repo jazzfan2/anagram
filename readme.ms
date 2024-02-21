@@ -11,8 +11,10 @@ Description:
 .pdfhref M "description"
 .LP
 anagram.sh is a shell script based on awk, that generates a full list of
-anagrams in the chosen language(s) present on the system, or if a word
-is given as an argument, only that word and its anagrams.
+anagrams in the chosen language(s) present on the system.
+In case a (combination of) word(s) is given as argument(s), it just
+generates the anagrams that fit this particular word(-combination).
+.PP
 Additionally, filters can be set for: - word-length - minimal and/or
 maximal number of anagrams per solution - characters to be all included
 and/or excluded
@@ -56,7 +58,7 @@ Usage:
 .IP
 .nf
 \f[C]
-anagram.sh [-abcdfghislmMIx] [WORD]
+anagram.sh [-abcdfghislmMIx] [WORD(1) ... WORD(n)]
 \f[]
 .fi
 .SH 2
