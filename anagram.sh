@@ -159,7 +159,6 @@ awk -v qty_min=$qty_min -v qty_max=$qty_max -v filterlength=$filterlength 'BEGIN
          PROCINFO["sorted_in"]="@val_str_asc"
          split("",qtylist)
          split("",anagrams)
-
      }
 
      {
