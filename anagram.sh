@@ -137,7 +137,7 @@ shift $((OPTIND-1))
 
 grep_chars=""
 for (( i = 0; i < ${#incl_chars}; i += 1 )); do
-    grep_chars=$grep_chars" | grep ${incl_chars:$i:1}"
+    grep_chars=$grep_chars" | grep -i ${incl_chars:$i:1}"
 done
 grep_chars=${grep_chars:2}
 
@@ -213,5 +213,5 @@ awk -v qty_min=$qty_min -v qty_max=$qty_max -v filterlength=$filterlength 'BEGIN
              }
          }
      }' | sort | grep "\( \|^\)"$pattern"\( \|$\)" |
-                 grep -v [$excl_chars] | eval "$grep_chars"
+                 grep -iv [$excl_chars] | eval "$grep_chars"
 
