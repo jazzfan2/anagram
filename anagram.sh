@@ -9,7 +9,7 @@
 # - word-length
 # - minimal and/or maximal number of anagrams per solution
 # - characters to be all included and/or excluded
-# - language setting, including any *combination* of languages.
+# Besides any single language, any *combination* of languages can be set as well.
 # Output can be piped to e.g. 'less' or other utilities and applications.
 #
 # Examples:

@@ -15,7 +15,11 @@ anagrams in the chosen language(s) present on the system, or if a word
 is given as an argument, only that word and its anagrams.
 Additionally, filters can be set for: - word-length - minimal and/or
 maximal number of anagrams per solution - characters to be all included
-and/or excluded - language, or any \f[I]combination\f[R] of languages
+and/or excluded
+.PP
+Besides any single language, any \f[I]combination\f[R] of languages can
+be set as well.
+.PP
 The results are sent to standard output and can be piped to e.g.\ `less'
 or other utilities and applications.
 .PP

@@ -7,7 +7,8 @@ Additionally, filters can be set for:
 - word-length
 - minimal and/or maximal number of anagrams per solution
 - characters to be all included and/or excluded
-- language, or any *combination* of languages
+
+Besides any single language, any *combination* of languages can be set as well.
 
 The results are sent to standard output and can be piped to e.g. 'less' or other utilities and applications.
 
