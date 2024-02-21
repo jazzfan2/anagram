@@ -8,6 +8,7 @@ Additionally, filters can be set for:
 - minimal and/or maximal number of anagrams per solution
 - characters to be all included and/or excluded
 - language, or any *combination* of languages
+
 The results are sent to standard output and can be piped to e.g. 'less' or other utilities and applications.
 
 Perequisite is presence on the system of a word list in flat text format of at least one language.
