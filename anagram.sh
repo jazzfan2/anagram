@@ -1,12 +1,14 @@
 #!/bin/bash
 # Name       : anagram.sh
 # Author     : Rob Toscani
-# Date       : 26-09-2023
+# Date       : 20-02-2024
 # Description: Shell script based on awk, generating a full list of anagrams in the 
 # chosen languages present on the system.
 # If a word argument is given, the output is filtered to only that word and its 
-# anagram(s) if present. Additionally, filters can be set for word-length and for 
-# minimal and/or maximal number of anagrams per solution.
+# anagram(s) if present. Additionally, filters can be set for:
+# - word-length
+# - minimal and/or maximal number of anagrams per solution
+# - characters to be all included and/or excluded
 # anagram.sh allows language setting, including any *combination* of languages.
 # Output can be piped to e.g. 'less' or other utilities and applications.
 #
@@ -73,7 +75,7 @@ helptext()
     done << EOF
 
 Usage:
-anagram.sh [-abcdfghilmMs] [WORD]
+anagram.sh [-abcdfghislmMIx] [WORD]
 
 -a	American-English
 -b	British-English
@@ -90,19 +92,24 @@ anagram.sh [-abcdfghilmMs] [WORD]
 |	Print solutions with at least QTY anagrams
 -M QTY
 |	Print solutions with at most QTY anagrams
-
+-I CHARS
+|   Include words with all of these CHARS
+-x CHARS
+|   Exclude words with any of these CHARS
 EOF
 }
 
 
 default=$dictionary_nl
-qty_min=1
+qty_min=2
 qty_max=100
 filterlength=0
+incl_chars="."    # Default: dot means include all characters
+excl_chars="_"    # Default: underscore does not appear so can always be excluded
 count=0
 touch $dict
 
-while getopts "abcdfghil:m:M:s" OPTION; do
+while getopts "abcdfghisl:m:M:I:x:" OPTION; do
     case $OPTION in
         a) cat $dictionary_am >> $dict; (( count += 1 )) ;;
         b) cat $dictionary_br >> $dict; (( count += 1 )) ;;
@@ -119,12 +126,21 @@ while getopts "abcdfghil:m:M:s" OPTION; do
         l) filterlength=$OPTARG ;;
         m) qty_min=$OPTARG ;;
         M) qty_max=$OPTARG ;;
+        I) incl_chars=$OPTARG ;;
+        x) excl_chars=$OPTARG ;;
         *) helptext; exit 1 ;;
     esac
 done
 shift $((OPTIND-1))
 
 [[ $# == 1 ]] && pattern="$1" || pattern="."
+
+grep_chars=""
+for (( i = 0; i < ${#incl_chars}; i += 1 )); do
+    grep_chars=$grep_chars" | grep ${incl_chars:$i:1}"
+done
+grep_chars=${grep_chars:2}
+
 
 echo -e "One moment, the output is being prepared ...\n" >&2
 
@@ -136,12 +152,14 @@ else
     cat $default
 fi |
 
-
-awk -v filterlength=$filterlength 'BEGIN {
+awk -v qty_min=$qty_min -v qty_max=$qty_max -v filterlength=$filterlength 'BEGIN {
          # Setting for looping through an array in ascending index order, see:
          # https://www.gnu.org/software/gawk/manual/gawk.html#Controlling-Scanning
 
          PROCINFO["sorted_in"]="@val_str_asc"
+         split("",qtylist)
+         split("",anagrams)
+
      }
 
      {
@@ -163,16 +181,38 @@ awk -v filterlength=$filterlength 'BEGIN {
          for (i in chars){
              signature = signature chars[i] # Unique sorted character combination (= signature)
          }
-         wordstring = anagrams[signature]   # String of previously stored words with this signature
-         len = length(wordstring)           # Length of existing string is always a multiple of 20
-         anagrams[signature] = sprintf("%-"len"s%-20s", wordstring, word)
+
+         if (! (signature in qtylist))
+             qtylist[signature] = 0                 # Array with number of words per signature
+
+         for (i = 0; ; i++){
+             if (! ((signature, i) in anagrams)){
+                 anagrams[signature, i] = word      # "Quasi-2D"-array of all words per signature 
+                 qtylist[signature] += 1
+                 break
+             }
+         }
      }
 
      END {
-         for (signature in anagrams){
-             if ((filterlength == 0) || (filterlength == length(signature)))
-                 print anagrams[signature]
+         for (signature in qtylist){
+             if (qtylist[signature] >= qty_min && qtylist[signature] <= qty_max){
+                 if ((filterlength == 0) || (filterlength == length(signature))){
+                     for (i = 0; ; i++){
+                         if ((signature, i) in anagrams){
+                             if (length(signature) < 18)
+                                 printf("%-20s", anagrams[signature, i])
+                             else
+                                 printf("%-40s", anagrams[signature, i])
+                         }
+                         else{
+                             printf("\n")
+                             break
+                         }
+                     }
+                 }
+             }
          }
-     }' | grep "\( \|^\)"$pattern"\( \|$\)" | 
-          awk -v qty_min=$qty_min -v qty_max=$qty_max '{ if (NF >= qty_min && NF <= qty_max) print }'
+     }' | sort | grep "\( \|^\)"$pattern"\( \|$\)" |
+                 grep -v [$excl_chars] | eval "$grep_chars"
 
