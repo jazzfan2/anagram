@@ -103,7 +103,7 @@ EOF
 
 default=$dictionary_nl
 words=""
-qty_min=1
+qty_min=2         # Anagram means at least two matching words, so this is the default
 qty_max=100
 filterlength=0
 incl_chars="."    # Default: dot means include all characters
@@ -135,7 +135,9 @@ while getopts "abcdfghisl:m:M:I:x:" OPTION; do
 done
 shift $((OPTIND-1))
 
-[[ $# != 0 ]] && words="$@"   # Word(s) argument(s)
+[[ $# != 0 ]] && words="$@"                         # Word(s) argument(s)
+
+([[ $# != 0 ]] && (( qty_min == 2 ))) && qty_min=1  # In case just 1 anagram matches *non-existent* word(s) 
 
 chargrep=""
 for (( i = 0; i < ${#incl_chars}; i += 1 )); do
