@@ -192,7 +192,7 @@ awk -v qty_min=$qty_min -v qty_max=$qty_max -v filterlength=$filterlength -v wor
      {
          signature = normalize($0)                    # Get signature of present dictionary word
          if (! (signature in qtylist))
-             qtylist[signature] = 0                   # Array of number of dict. words per signature
+             qtylist[signature] = 0                   # Aux. array of number of dict. words per signature
 
          anagrams[signature, qtylist[signature]] = $0 # "Quasi-2D"-array of all dict. words per signature 
          qtylist[signature] += 1
