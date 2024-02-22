@@ -4,8 +4,8 @@
 # Date       : 20-02-2024
 # Description: Shell script based on awk, generating a full list of anagrams in the 
 # chosen languages present on the system.
-# In case a (combination of) word(s) is given as argument(s), it just generates the 
-# anagrams that fit this particular word(-combination).
+# In case a (combination of) word(s) - whether or not existing(!) - is given as argument(s), 
+# it only generates the anagrams that fit the (combination of) word(s). 
 # Additionally, filters can be set for:
 # - anagram-length
 # - minimal and/or maximal number of anagrams per solution
@@ -173,7 +173,7 @@ awk -v qty_min=$qty_min -v qty_max=$qty_max -v filterlength=$filterlength -v wor
          for (i in chars){
              signature = signature chars[i]
          }
-         return signature                    # Unique sorted character combination (= signature)
+         return signature                    # Unique sorted character combination
     }
 
     BEGIN {

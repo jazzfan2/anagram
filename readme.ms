@@ -12,8 +12,9 @@ Description:
 .LP
 anagram.sh is a shell script based on awk, that generates a full list of
 anagrams in the chosen language(s) present on the system.
-In case a (combination of) word(s) is given as argument(s), it just
-generates the anagrams that fit this particular word(-combination).
+In case a (combination of) word(s) - whether or not existing(!) - is
+given as argument(s), it only generates the anagrams that fit the
+(combination of) word(s).
 .PP
 Additionally, filters can be set for: - anagram-length - minimal and/or
 maximal number of anagrams per solution - characters to be all included
