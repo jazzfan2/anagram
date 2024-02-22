@@ -186,7 +186,7 @@ awk -v qty_min=$qty_min -v qty_max=$qty_max -v filterlength=$filterlength -v wor
          split("",qtylist)
          split("",anagrams)
 
-         words = normalize(words)                     # Get signature of (optional) word(s) argument
+         words = normalize(words)                     # Get signature of (optional) word(s) argument(s)
      }
 
      {
