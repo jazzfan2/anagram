@@ -89,8 +89,9 @@ Options:
 All options can be combined.
 If no language option is given, Dutch is the default language.
 .PP
-The [WORD] argument is optional, and makes anagram.sh filter the output
-to only the given word and its anagram(s) if present.
+The [WORD] arguments are optional, and make anagram.sh filter the output
+to only the given (combination of) word(s) and its anagram(s) if
+present.
 .PP
 For example, the command:
 .IP

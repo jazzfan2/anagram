@@ -53,7 +53,7 @@ If wished and as per system configuration, above paths and langauge default may 
 
 All options can be combined. If no language option is given, Dutch is the default language.
 
-The [WORD] argument is optional, and makes anagram.sh filter the output to only the given word and its anagram(s) if present.
+The [WORD] arguments are optional, and make anagram.sh filter the output to only the given (combination of) word(s) and its anagram(s) if present.
 
 For example, the command:
 
