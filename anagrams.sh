@@ -22,7 +22,7 @@
 # Perequisite is presence on the system of a word list in flat text format of at least
 # one language.
 #
-# Alternative version of anagram.sh, with real 2D arrays instead of 'quasi-2D'-arrays.
+# Alternative version of anagram.sh, using a real 2D array instead of a 'quasi-2D'-array.
 # Same speed.
 #
 ######################################################################################
