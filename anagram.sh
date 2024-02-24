@@ -102,7 +102,7 @@ EOF
 
 
 default=$dictionary_nl
-words=""
+word_args=""
 qty_min=2         # Anagram means at least two matching words, so this is the default
 qty_max=100
 filterlength=0
@@ -135,7 +135,7 @@ while getopts "abcdfghisl:m:M:I:x:" OPTION; do
 done
 shift $((OPTIND-1))
 
-[[ $# != 0 ]] && words="$@"                         # Word(s) argument(s)
+[[ $# != 0 ]] && word_args="$@"                     # Word(s) argument(s)
 
 ([[ $# != 0 ]] && (( qty_min == 2 ))) && qty_min=1  # In case just 1 anagram matches *non-existent* word(s) 
 
@@ -156,7 +156,8 @@ else
     cat $default
 fi |
 
-awk -v qty_min=$qty_min -v qty_max=$qty_max -v filterlength=$filterlength -v words="$words" '\
+awk -v qty_min=$qty_min -v qty_max=$qty_max -v filterlength=$filterlength \
+    -v word_args="$word_args" '\
     function normalize(string)
     {
          string = tolower(string)
@@ -186,7 +187,7 @@ awk -v qty_min=$qty_min -v qty_max=$qty_max -v filterlength=$filterlength -v wor
          split("",qtylist)
          split("",anagrams)
 
-         words = normalize(words)                     # Get signature of (optional) word(s) argument(s)
+         word_args = normalize(word_args)    # Get signature of (optional) word(s) argument(s)
      }
 
      {
@@ -200,7 +201,7 @@ awk -v qty_min=$qty_min -v qty_max=$qty_max -v filterlength=$filterlength -v wor
 
      END {
          for (signature in qtylist){
-             if ((length(words) == 0 || signature == words) &&
+             if ((length(word_args) == 0 || signature == word_args) &&
                 qtylist[signature] >= qty_min && qtylist[signature] <= qty_max &&
                 (filterlength == 0 || filterlength == length(signature))){
                  for (i = 0; i < qtylist[signature]; i++){
