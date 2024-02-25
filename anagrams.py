@@ -62,7 +62,9 @@ def concatenate(languagefile, language):
             dictionarylist.append(language.readlines())
 
 def normalize(string):
-    """Convert string to a unique sorted character signature:"""
+    """ By means of regular expressions, normalize all characters to lower case,
+        remove accent marks and other non-alphanumeric characters,
+        and convert string to a unique sorted character signature:"""
     signature = a_acc.sub('a', \
                 e_acc.sub('e', \
                 i_acc.sub('i', \
@@ -72,7 +74,7 @@ def normalize(string):
                 c_ced.sub('c', \
                 intpun.sub('', string))))))))
     signature = ''.join(sorted(signature.lower()))
-    return signature
+    return signature                    # Unique sorted character combination
 
 
 def incl(string, incl_chars):
@@ -98,6 +100,7 @@ dictionary_fr = "/usr/share/dict/french"
 dictionary_sp = "/usr/share/dict/spanish"
 dictionary_it = "/usr/share/dict/italian"
 
+# Text printed if -h option (help) or a non-existing option has been given:
 usage = """
 Usage:
 anagrams.sh [-abcdfghislmMIx] [WORD(1) [ ... WORD(n)]]\n
@@ -127,8 +130,8 @@ word_args = ""
 qty_min = 2        # Anagram means at least two matching words, so this is the default
 qty_max = 100
 filterlength = 0
-incl_chars = ""
-excl_chars = "_"
+incl_chars = ""    # Default: dot means include all characters
+excl_chars = "_"   # Default: underscore does not appear so can always be excluded
 
 """Regular expressions:"""
 intpun = re.compile('[\'\" .&-]')
@@ -161,7 +164,7 @@ for opt, arg in options:
     elif opt in ('-f'):
         concatenate(dictionary_fr, "f")
     elif opt in ('-g'):
-        concatenate(dictionary_de, "g")    # UTF-8 probleem !
+        concatenate(dictionary_de, "g")
     elif opt in ('-i'):
         concatenate(dictionary_it, "i")
     elif opt in ('-s'):
@@ -185,26 +188,26 @@ for opt, arg in options:
     elif opt in ('-x'):
         excl_chars = arg
 
-for argument in non_option_args:
-    word_args = word_args + argument   # Space not needed
+for argument in non_option_args:          # Word(s) argument(s)
+    word_args = word_args + argument      # (space not needed)
 
 if len(word_args) != 0 and qty_min == 2:
-    qty_min = 1
+    qty_min = 1                           # If just 1 anagram matches *non-existent* word(s) 
 
 print("One moment, the output is being prepared ...")
 
 if len(dictionarylist) == 0:
     concatenate(dictionary_nl)
  
-word_args = normalize(word_args)
+word_args = normalize(word_args)          # Get signature of (optional) word(s) argument(s)
 
 dictionarylist = sorted(set([word.replace("\n","") for language in dictionarylist for word in language]))
 
 anagrams = {}
 for word in dictionarylist:
-    signature = normalize(word)
+    signature = normalize(word)           # Get signature of present dictionary word
     if signature in anagrams:
-        anagrams[signature].append(word)
+        anagrams[signature].append(word)  # 2D-array of all dict. words per signature 
     else:
         anagrams[signature] = [word]
 
