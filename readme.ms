@@ -56,7 +56,7 @@ How to use anagram
 .pdfhref O 1 "How to use anagram"
 .pdfhref M "how-to-use-anagram"
 .LP
-All three program versions have same functionality and options.
+All three program versions have the same functionality and options.
 The speed of the Python version can be further enhanced by using pypy3.
 .SH 2
 Usage (for example for the Python3 version):

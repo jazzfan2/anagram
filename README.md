@@ -35,7 +35,7 @@ If wished and as per system configuration, above paths and langauge default may 
 
 # How to use anagram
 
-All three program versions have same functionality and options.
+All three program versions have the same functionality and options.
 The speed of the Python version can be further enhanced by using pypy3.
 
 ## Usage (for example for the Python3 version):
