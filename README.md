@@ -33,7 +33,7 @@ If no language option is given, Dutch is the default language.
 
 If wished and as per system configuration, above paths and langauge default may be changed or removed and references to other word lists may be added, by modifying the program code accordingly.
 
-# How to use anagram.sh
+# How to use anagram
 
 All three program versions have same functionality and options.
 The speed of the Python version can be further enhanced by using pypy3.

@@ -52,9 +52,9 @@ If wished and as per system configuration, above paths and langauge
 default may be changed or removed and references to other word lists may
 be added, by modifying the program code accordingly.
 .SH 1
-How to use anagram.sh
-.pdfhref O 1 "How to use anagram.sh"
-.pdfhref M "how-to-use-anagram.sh"
+How to use anagram
+.pdfhref O 1 "How to use anagram"
+.pdfhref M "how-to-use-anagram"
 .LP
 All three program versions have same functionality and options.
 The speed of the Python version can be further enhanced by using pypy3.
