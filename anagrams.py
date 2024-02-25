@@ -206,7 +206,7 @@ anagrams = {}
 for word in dictionarylist:
     signature = normalize(word)           # Get signature of present dictionary word
     if signature in anagrams:
-        anagrams[signature].append(word)  # 2D-array of all dict. words per signature 
+        anagrams[signature].append(word)  # Store all words with this signature in common list
     else:
         anagrams[signature] = [word]
 
