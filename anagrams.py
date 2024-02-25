@@ -54,7 +54,7 @@ def concatenate(languagefile, language):
     if language == "g":  # German language list isn't UTF-8 encoded and contains superfluous text 
         with open(languagefile,'r', encoding='ISO-8859-1') as language:
              wordlist = language.readlines()
-        wordlist = [ cut_slash.sub('', line) for line in wordlist if line[0] != "#" ]
+        wordlist = [ slashtag.sub('', line) for line in wordlist if line[0] != "#" ]
         dictionarylist.append(wordlist)
     else:
         with open(languagefile,'r') as language:
@@ -141,7 +141,7 @@ o_acc = re.compile('[óòöôøÓÒÖÔ]')
 u_acc = re.compile('[úùüÚÙÜ]')
 n_til = re.compile('[ñÑ]')
 c_ced = re.compile('[çÇ]')
-cut_slash = re.compile('\/[^/]*')
+slashtag = re.compile('\/[^/]*')
 
 '""Select option(s):""'
 try:
