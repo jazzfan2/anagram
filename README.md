@@ -1,4 +1,4 @@
-# Name: anagram.sh
+# Name: anagram / anagrams
 anagram - A program that generates a full list of anagrams in a chosen (combination of) language(s). Three versions are available:
 - anagram.sh  - Bash version with awk (with 'quasi-2D'-arrays)
 - anagrams.sh - Bash version with awk (with real 2D-arrays)

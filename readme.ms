@@ -1,7 +1,7 @@
 .SH 1
-Name: anagram.sh
-.pdfhref O 1 "Name: anagram.sh"
-.pdfhref M "name-anagram.sh"
+Name: anagram / anagrams
+.pdfhref O 1 "Name: anagram / anagrams"
+.pdfhref M "name-anagram-anagrams"
 .LP
 anagram - A program that generates a full list of anagrams in a chosen
 (combination of) language(s).
