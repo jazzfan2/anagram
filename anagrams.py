@@ -187,26 +187,26 @@ for opt, arg in options:
     elif opt in ('-x'):
         excl_chars = arg
 
-for argument in non_option_args:          # Word(s) argument(s)
-    word_args = word_args + argument      # (space not needed)
+for argument in non_option_args:         # Word(s) argument(s)
+    word_args = word_args + argument     # (space not needed)
 
 if len(word_args) != 0 and qty_min == 2:
-    qty_min = 1                           # If just 1 anagram matches *non-existent* word(s) 
+    qty_min = 1                          # If just 1 anagram matches *non-existent* word(s) 
 
 print("One moment, the output is being prepared ...")
 
 if len(dictionarylist) == 0:
     concatenate(dictionary_nl)
  
-word_args = normalize(word_args)          # Get signature of (optional) word(s) argument(s)
+word_args = normalize(word_args)         # Get signature of (optional) word(s) argument(s)
 
 dictionarylist = sorted(set([word.replace("\n","") for language in dictionarylist for word in language]))
 
 anagrams = {}
 for word in dictionarylist:
-    signature = normalize(word)           # Get signature of present dictionary word
+    signature = normalize(word)          # Get signature of present dictionary word
     if signature in anagrams:
-        anagrams[signature].append(word)  # Store all words with this signature in common list
+        anagrams[signature].append(word) # Store all words with this signature into common list
     else:
         anagrams[signature] = [word]
 
