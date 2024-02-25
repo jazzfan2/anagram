@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 # Name  : anagrams.py
 # Author: R.J.Toscani
-# Datum : 24-02-2024
-# 
+# Date  : 24-02-2024
 # Description: Python3 script that generates a full list of anagrams in the 
 # chosen languages present on the system.
 # In case a (combination of) word(s) - whether or not existing(!) - is given as 
