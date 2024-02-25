@@ -1,8 +1,11 @@
 # Name: anagram.sh
-anagram.sh - A program that generates a full list of anagrams in a chosen (combination of) language(s).
+anagram - A program that generates a full list of anagrams in a chosen (combination of) language(s). Three versions are available:
+- anagram.sh  - Bash version with awk (with 'quasi-2D'-arrays)
+- anagrams.sh - Bash version with awk (with real 2D-arrays)
+- anagrams.sh - Python3 version, derived from anagrams.sh
 
 # Description:
-anagram.sh is a shell script based on awk, that generates a full list of anagrams in the chosen language(s) present on the system.
+anagram is a script that generates a full list of anagrams in the chosen language(s) present on the system.
 In case a (combination of) word(s) - whether or not existing(!) - is given as argument(s),
 it only generates the anagrams that fit the (combination of) word(s). 
 
@@ -31,9 +34,13 @@ If no language option is given, Dutch is the default language.
 If wished and as per system configuration, above paths and langauge default may be changed or removed and references to other word lists may be added, by modifying the program code accordingly.
 
 # How to use anagram.sh
-## Usage:
 
-	anagram.sh [-abcdfghislmMIx] [WORD(1) [ ... WORD(n)]]
+All three program versions have same functionality and options.
+The speed of the Python version can be further enhanced by using pypy3.
+
+## Usage (for example for the Python3 version):
+
+	anagrams.py [-abcdfghislmMIx] [WORD(1) [ ... WORD(n)]]
 
 ## Options:
 	-a          American-English
@@ -53,11 +60,11 @@ If wished and as per system configuration, above paths and langauge default may 
 
 All options can be combined. If no language option is given, Dutch is the default language.
 
-The [WORD] arguments are optional, and make anagram.sh filter the output to only the given (combination of) word(s) and its anagram(s) if present.
+The [WORD] arguments are optional, and make the program filter the output to only the given (combination of) word(s) and its anagram(s) if present.
 
 For example, the command:
 
-	./anagram.sh -abdfgs emirates
+	./anagrams.py -abdfgs emirates
 
 gives following results:
 

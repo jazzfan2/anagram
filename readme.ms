@@ -3,15 +3,18 @@ Name: anagram.sh
 .pdfhref O 1 "Name: anagram.sh"
 .pdfhref M "name-anagram.sh"
 .LP
-anagram.sh - A program that generates a full list of anagrams in a
-chosen (combination of) language(s).
+anagram - A program that generates a full list of anagrams in a chosen
+(combination of) language(s).
+Three versions are available: - anagram.sh - Bash version with awk (with
+`quasi-2D'-arrays) - anagrams.sh - Bash version with awk (with real
+2D-arrays) - anagrams.sh - Python3 version, derived from anagrams.sh
 .SH 1
 Description:
 .pdfhref O 1 "Description:"
 .pdfhref M "description"
 .LP
-anagram.sh is a shell script based on awk, that generates a full list of
-anagrams in the chosen language(s) present on the system.
+anagram is a script that generates a full list of anagrams in the chosen
+language(s) present on the system.
 In case a (combination of) word(s) - whether or not existing(!) - is
 given as argument(s), it only generates the anagrams that fit the
 (combination of) word(s).
@@ -52,14 +55,17 @@ be added, by modifying the program code accordingly.
 How to use anagram.sh
 .pdfhref O 1 "How to use anagram.sh"
 .pdfhref M "how-to-use-anagram.sh"
+.LP
+All three program versions have same functionality and options.
+The speed of the Python version can be further enhanced by using pypy3.
 .SH 2
-Usage:
-.pdfhref O 2 "Usage:"
-.pdfhref M "usage"
+Usage (for example for the Python3 version):
+.pdfhref O 2 "Usage (for example for the Python3 version):"
+.pdfhref M "usage-for-example-for-the-python3-version"
 .IP
 .nf
 \f[C]
-anagram.sh [-abcdfghislmMIx] [WORD(1) [ ... WORD(n)]]
+anagrams.py [-abcdfghislmMIx] [WORD(1) [ ... WORD(n)]]
 \f[]
 .fi
 .SH 2
@@ -89,15 +95,15 @@ Options:
 All options can be combined.
 If no language option is given, Dutch is the default language.
 .PP
-The [WORD] arguments are optional, and make anagram.sh filter the output
-to only the given (combination of) word(s) and its anagram(s) if
+The [WORD] arguments are optional, and make the program filter the
+output to only the given (combination of) word(s) and its anagram(s) if
 present.
 .PP
 For example, the command:
 .IP
 .nf
 \f[C]
-./anagram.sh -abdfgs emirates
+./anagrams.py -abdfgs emirates
 \f[]
 .fi
 .LP
