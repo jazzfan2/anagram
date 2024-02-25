@@ -23,6 +23,7 @@
 # Perequisite is presence on the system of a word list in flat text format of at least
 # one language.
 #
+# Python3 version of anagrams.sh
 # Use pypy3 for enhanced speed.
 #
 ######################################################################################
