@@ -196,7 +196,7 @@ if len(word_args) != 0 and qty_min == 2:
 print("One moment, the output is being prepared ...")
 
 if len(dictionarylist) == 0:
-    concatenate(dictionary_nl)
+    concatenate(dictionary_nl, "d")
  
 word_args = normalize(word_args)         # Get signature of (optional) word(s) argument(s)
 
