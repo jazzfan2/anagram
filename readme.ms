@@ -1,13 +1,13 @@
 .SH 1
-Name: anagram / anagrams
-.pdfhref O 1 "Name: anagram / anagrams"
-.pdfhref M "name-anagram-anagrams"
+Name: anagram
+.pdfhref O 1 "Name: anagram"
+.pdfhref M "name-anagram"
 .LP
 anagram - A program that generates a full list of anagrams in a chosen
 (combination of) language(s).
-Three versions are available: - anagram.sh - Bash version with awk (with
-`quasi-2D'-arrays) - anagrams.sh - Bash version with awk (with real
-2D-arrays) - anagrams.sh - Python3 version, derived from anagrams.sh
+Three versions are available: - anagram - Bash version with awk (with
+`quasi-2D'-arrays) - anagram.sh - Bash version with awk (with real
+2D-arrays) - anagram.py - Python3 version, derived from anagrams.sh
 .SH 1
 Description:
 .pdfhref O 1 "Description:"
@@ -65,7 +65,7 @@ Usage (for example for the Python3 version):
 .IP
 .nf
 \f[C]
-anagrams.py [-abcdfghislmMIx] [WORD(1) [ ... WORD(n)]]
+anagram.py [-abcdfghislmMIx] [WORD(1) [ ... WORD(n)]]
 \f[]
 .fi
 .SH 2
@@ -103,7 +103,7 @@ For example, the command:
 .IP
 .nf
 \f[C]
-./anagrams.py -abdfgs emirates
+./anagram.py -abdfgs emirates
 \f[]
 .fi
 .LP
