@@ -1,11 +1,11 @@
 # Name: anagram
-anagram - A program that generates a full list of anagrams in a chosen (combination of) language(s). Three versions are available:
+anagram - A program that generates a full list of anagram words in a chosen (combination of) language(s). Three versions are available:
 - anagram    - Bash version with awk (with 'quasi-2D'-arrays)
 - anagram.sh - Bash version with awk (with real 2D-arrays)
 - anagram.py - Python3 version, derived from anagrams.sh
 
 # Description:
-anagram is a script that generates a full list of anagrams in the chosen language(s) present on the system.
+anagram is a script that generates a full list of anagram words in the chosen language(s) present on the system.
 In case a (combination of) word(s) - whether or not existing(!) - is given as argument(s),
 it only generates the anagrams that fit the (combination of) word(s). 
 
