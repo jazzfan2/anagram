@@ -1,8 +1,8 @@
-# Name: anagram / anagrams
+# Name: anagram
 anagram - A program that generates a full list of anagrams in a chosen (combination of) language(s). Three versions are available:
-- anagram.sh  - Bash version with awk (with 'quasi-2D'-arrays)
-- anagrams.sh - Bash version with awk (with real 2D-arrays)
-- anagrams.sh - Python3 version, derived from anagrams.sh
+- anagram    - Bash version with awk (with 'quasi-2D'-arrays)
+- anagram.sh - Bash version with awk (with real 2D-arrays)
+- anagram.py - Python3 version, derived from anagrams.sh
 
 # Description:
 anagram is a script that generates a full list of anagrams in the chosen language(s) present on the system.
@@ -40,7 +40,7 @@ The speed of the Python version can be further enhanced by using pypy3.
 
 ## Usage (for example for the Python3 version):
 
-	anagrams.py [-abcdfghislmMIx] [WORD(1) [ ... WORD(n)]]
+	anagram.py [-abcdfghislmMIx] [WORD(1) [ ... WORD(n)]]
 
 ## Options:
 	-a          American-English
@@ -64,7 +64,7 @@ The [WORD] arguments are optional, and make the program filter the output to onl
 
 For example, the command:
 
-	./anagrams.py -abdfgs emirates
+	./anagram.py -abdfgs emirates
 
 gives following results:
 
