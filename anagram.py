@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Name  : anagrams.py
+# Name  : anagram.py
 # Author: R.J.Toscani
 # Date  : 24-02-2024
 # Description: Python3 script that generates a full list of anagrams in the 
@@ -15,26 +15,26 @@
 #
 # Examples:
 #
-#   anagrams.py -abdgsi | sed -r 's/ {2,}/\t/g' | grep -E "[^\t]\t+[^\t]" | allign_tsv.sh -
-#   anagrams.py -abdgsi | sed -r 's/ {2,}/\t/g' | grep -E "[^\t]\t+[^\t]" | text2troff - | trofms
-#   anagrams.py -abdgsi | sed 's/ *$//g' | sed -r 's/ {2,}/\t/g' | grep -E "[\t].+[\t]" | text2troff -s - | trofms
+#   anagram.py -abdgsi | sed -r 's/ {2,}/\t/g' | grep -E "[^\t]\t+[^\t]" | allign_tsv.sh -
+#   anagram.py -abdgsi | sed -r 's/ {2,}/\t/g' | grep -E "[^\t]\t+[^\t]" | text2troff - | trofms
+#   anagram.py -abdgsi | sed 's/ *$//g' | sed -r 's/ {2,}/\t/g' | grep -E "[\t].+[\t]" | text2troff -s - | trofms
 #
 # Perequisite is presence on the system of a word list in flat text format of at least
 # one language.
 #
-# Python3 version of anagrams.sh
+# Python3 version of anagram.sh
 # Use pypy3 for enhanced speed.
 #
 ######################################################################################
 #
 # Copyright (C) 2024 Rob Toscani <rob_toscani@yahoo.com>
 #
-# anagrams.py is free software: you can redistribute it and/or modify
+# anagram.py is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
 #
-# anagrams.py is distributed in the hope that it will be useful,
+# anagram.py is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.

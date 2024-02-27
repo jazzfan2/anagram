@@ -1,5 +1,5 @@
 #!/bin/bash
-# Name       : anagram.sh
+# Name       : anagram
 # Author     : Rob Toscani
 # Date       : 20-02-2024
 # Description: Shell script based on awk, generating a full list of anagrams in the 
@@ -15,9 +15,9 @@
 #
 # Examples:
 #
-#   anagram.sh -abdgsi | sed -r 's/ {2,}/\t/g' | grep -E "[^\t]\t+[^\t]" | allign_tsv.sh -
-#   anagram.sh -abdgsi | sed -r 's/ {2,}/\t/g' | grep -E "[^\t]\t+[^\t]" | text2troff - | trofms
-#   anagram.sh -abdgsi | sed 's/ *$//g' | sed -r 's/ {2,}/\t/g' | grep -E "[\t].+[\t]" | text2troff -s - | trofms
+#   anagram -abdgsi | sed -r 's/ {2,}/\t/g' | grep -E "[^\t]\t+[^\t]" | allign_tsv.sh -
+#   anagram -abdgsi | sed -r 's/ {2,}/\t/g' | grep -E "[^\t]\t+[^\t]" | text2troff - | trofms
+#   anagram -abdgsi | sed 's/ *$//g' | sed -r 's/ {2,}/\t/g' | grep -E "[\t].+[\t]" | text2troff -s - | trofms
 #
 # Perequisite is presence on the system of a word list in flat text format of at least
 # one language.
@@ -26,12 +26,12 @@
 #
 # Copyright (C) 2024 Rob Toscani <rob_toscani@yahoo.com>
 #
-# anagram.sh is free software: you can redistribute it and/or modify
+# anagram is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
 #
-# anagram.sh is distributed in the hope that it will be useful,
+# anagram is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.

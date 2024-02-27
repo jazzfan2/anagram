@@ -1,5 +1,5 @@
 #!/bin/bash
-# Name       : anagrams.sh
+# Name       : anagram.sh
 # Author     : Rob Toscani
 # Date       : 22-02-2024
 # Description: Shell script based on awk, generating a full list of anagrams in the 
@@ -15,26 +15,26 @@
 #
 # Examples:
 #
-#   anagrams.sh -abdgsi | sed -r 's/ {2,}/\t/g' | grep -E "[^\t]\t+[^\t]" | allign_tsv.sh -
-#   anagrams.sh -abdgsi | sed -r 's/ {2,}/\t/g' | grep -E "[^\t]\t+[^\t]" | text2troff - | trofms
-#   anagrams.sh -abdgsi | sed 's/ *$//g' | sed -r 's/ {2,}/\t/g' | grep -E "[\t].+[\t]" | text2troff -s - | trofms
+#   anagram.sh -abdgsi | sed -r 's/ {2,}/\t/g' | grep -E "[^\t]\t+[^\t]" | allign_tsv.sh -
+#   anagram.sh -abdgsi | sed -r 's/ {2,}/\t/g' | grep -E "[^\t]\t+[^\t]" | text2troff - | trofms
+#   anagram.sh -abdgsi | sed 's/ *$//g' | sed -r 's/ {2,}/\t/g' | grep -E "[\t].+[\t]" | text2troff -s - | trofms
 #
 # Perequisite is presence on the system of a word list in flat text format of at least
 # one language.
 #
-# Alternative version of anagram.sh, using a real 2D array instead of a 'quasi-2D'-array.
+# Alternative version of anagram, using a real 2D array instead of a 'quasi-2D'-array.
 # Same speed.
 #
 ######################################################################################
 #
 # Copyright (C) 2024 Rob Toscani <rob_toscani@yahoo.com>
 #
-# anagrams.sh is free software: you can redistribute it and/or modify
+# anagram.sh is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
 #
-# anagrams.sh is distributed in the hope that it will be useful,
+# anagram.sh is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
