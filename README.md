@@ -1,5 +1,5 @@
 # Name: anagram
-anagram - generates a full list anagram sets of single words in a chosen (combination of) language(s).. Three versions are available:
+anagram - generates a full list anagram sets of single words in a chosen (combination of) language(s). Three versions are available:
 - anagram    - Bash version with awk (with 'quasi-2D'-arrays)
 - anagram.sh - Bash version with awk (with real 2D-arrays)
 - anagram.py - Python3 version, derived from anagrams.sh
