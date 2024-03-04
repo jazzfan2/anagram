@@ -21,9 +21,9 @@ no \f[I]multi-word anagrams\f[R].
 For latter functionality, refer to the more advanced program
 `anagrams.py'.
 .PP
-In case a (combination of) word(s) - whether or not existing(!) - is
-given as argument(s), the program will in that case filter the results
-to only show the matching anagram words(s).
+If a facultative (combination of) word(s) - whether or not existing(!) -
+is given as argument(s), the program will filter the results to only
+show the matching anagram words(s).
 .PP
 Additionally, filters can be set for: - word length, being the number of
 alphanumerical characters per word; - minimal and/or maximal number of
