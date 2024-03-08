@@ -75,7 +75,6 @@ def normalize(string):
     signature = ''.join(sorted(signature.lower()))
     return signature                    # Unique sorted character combination
 
-
 def incl(string, incl_chars):
     for char in incl_chars:
         if not char in string:
