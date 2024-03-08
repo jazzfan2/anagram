@@ -99,6 +99,25 @@ dictionary_fr = "/usr/share/dict/french"
 dictionary_sp = "/usr/share/dict/spanish"
 dictionary_it = "/usr/share/dict/italian"
 
+dictionarylist = []
+word_args = ""
+qty_min = 2        # Anagram means at least two matching words, so this is the default
+qty_max = 100
+filterlength = 0
+incl_chars = ""    # Default: dot means include all characters
+excl_chars = "_"   # Default: underscore does not appear so can always be excluded
+
+# Regular expressions:
+intpun = re.compile('[\'\" .&-]')
+a_acc = re.compile('[áàäâåÁÀÄÂ]')
+e_acc = re.compile('[éèëêÉÈËÊ]')
+i_acc = re.compile('[ïíìÏÍÌ]')
+o_acc = re.compile('[óòöôøÓÒÖÔ]')
+u_acc = re.compile('[úùüÚÙÜ]')
+n_til = re.compile('[ñÑ]')
+c_ced = re.compile('[çÇ]')
+slashtag = re.compile('\/[^/]*')
+
 # Text printed if -h option (help) or a non-existing option has been given:
 usage = """
 Usage:
@@ -124,26 +143,7 @@ anagrams.sh [-abcdfghislmMIx] [WORD(1) [ ... WORD(n)]]\n
 \t	Exclude words with any of these CHARS 
 """
 
-dictionarylist = []
-word_args = ""
-qty_min = 2        # Anagram means at least two matching words, so this is the default
-qty_max = 100
-filterlength = 0
-incl_chars = ""    # Default: dot means include all characters
-excl_chars = "_"   # Default: underscore does not appear so can always be excluded
-
-"""Regular expressions:"""
-intpun = re.compile('[\'\" .&-]')
-a_acc = re.compile('[áàäâåÁÀÄÂ]')
-e_acc = re.compile('[éèëêÉÈËÊ]')
-i_acc = re.compile('[ïíìÏÍÌ]')
-o_acc = re.compile('[óòöôøÓÒÖÔ]')
-u_acc = re.compile('[úùüÚÙÜ]')
-n_til = re.compile('[ñÑ]')
-c_ced = re.compile('[çÇ]')
-slashtag = re.compile('\/[^/]*')
-
-'""Select option(s):""'
+# Select option(s):
 try:
     options, non_option_args = getopt.getopt(sys.argv[1:], 'abcdfghisl:m:M:I:x:')
 except:
