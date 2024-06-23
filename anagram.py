@@ -117,7 +117,7 @@ n_til = re.compile('[ñÑ]')
 c_ced = re.compile('[çÇ]')
 slashtag = re.compile('\/[^/]*')
 
-# Text printed if -h option (help) or a non-existing option has been given:
+# Text printed if -h option (help) or a non-existent option has been given:
 usage = """
 Usage:
 anagrams.sh [-abcdfghislmMIx] [WORD(1) [ ... WORD(n)]]\n
